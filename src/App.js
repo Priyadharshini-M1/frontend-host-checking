@@ -8,7 +8,10 @@ import Book from './Book';
 import axios from 'axios';
 
 axios.defaults.baseURL = "https://d455-16-16-120-213.ngrok-free.app";
-axios.defaults.headers.common["Content-Type"] = "application/json";  // Fixed the typo here
+axios.defaults.headers = {
+  "Content-Type":"application.json",
+  "ngrok-skip-browser-warning":"69420",
+};
 
 function App() {
   return (

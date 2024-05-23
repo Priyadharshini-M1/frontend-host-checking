@@ -18,33 +18,25 @@ const Book = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      const response = await fetch(`/book`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+    const response = await fetch(`/book`, {
+      method: 'POST',
+    });
 
-      if (!response.ok) {
-        throw new Error(`Failed to submit form: ${response.statusText}`);
-      }
-
-      // Reset form after successful submission
-      setFormData({
-        name: '',
-        age: '',
-        totalPersons: '',
-        checkIn: '',
-        checkOut: ''
-      });
-
-      console.log('Form submitted successfully');
-    } catch (error) {
-      console.error('Error submitting form:', error);
+    if (!response.ok) {
+      console.error(`Failed to submit form: ${response.statusText}`);
       alert('Error submitting form. Please try again.');
+      return;
     }
+
+    setFormData({
+      name: '',
+      age: '',
+      totalPersons: '',
+      checkIn: '',
+      checkOut: ''
+    });
+
+    console.log('Form submitted successfully');
   };
 
   return (
