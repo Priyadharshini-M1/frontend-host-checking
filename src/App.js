@@ -5,6 +5,13 @@ import LoginForm from './LoginForm';
 import Signup from './Signup';
 import Home from './Home';
 import Book from './Book';
+import axios from 'axios';
+
+axios.defaults.baseURL = "https://d455-16-16-120-213.ngrok-free.app";
+axios.defaults.headers = {
+  "Content-Type":"application.json",
+  "ngrok-skip-browser-warning":"69420",
+};
 
 function App() {
   return (

@@ -18,15 +18,8 @@ const Book = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validate check-in and check-out dates
-    const today = new Date().toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
-    if (formData.checkIn < today || formData.checkOut < today) {
-      alert('Check-in and check-out dates must be in the future or present');
-      return;
-    }
-
     try {
-      const response = await fetch('http://localhost:3001/book', {
+      const response = await fetch(`/book`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -35,7 +28,7 @@ const Book = () => {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to submit form');
+        throw new Error(`Failed to submit form: ${response.statusText}`);
       }
 
       // Reset form after successful submission
@@ -50,6 +43,7 @@ const Book = () => {
       console.log('Form submitted successfully');
     } catch (error) {
       console.error('Error submitting form:', error);
+      alert('Error submitting form. Please try again.');
     }
   };
 

@@ -87,15 +87,15 @@ const housesData = [
 ];
 const Home = () => {
   const navigate = useNavigate();
-    const [favoriteHouses, setFavoriteHouses] = useState([]);
-    const [showFavorites, setShowFavorites] = useState(false);
-  
-    const addToFavorites = (houseId) => {
-      const houseToAdd = housesData.find((house) => house.id === houseId);
-      if (houseToAdd && !favoriteHouses.some((h) => h.id === houseToAdd.id)) {
-        setFavoriteHouses([...favoriteHouses, houseToAdd]);
-      }
-    };
+
+  const [favoriteHouses, setFavoriteHouses] = useState([]);
+const [showFavorites, setShowFavorites] = useState(false);
+const addToFavorites = (houseId) => {
+  const houseToAdd = housesData.find((house) => house.id === houseId);
+  if (houseToAdd && !favoriteHouses.some((h) => h.id === houseToAdd.id)) {
+    setFavoriteHouses([...favoriteHouses, houseToAdd]);
+  }
+};
 
     const handleBook = () =>{
       navigate('/Book');
